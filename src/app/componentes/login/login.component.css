@@ -1,0 +1,113 @@
+
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* espaço entre imagem e formulário */
+  }
+  
+  #img1{
+      width: 800px;
+      height: auto;
+   
+  }
+  
+  form {
+    background-color: #836FFF;
+    width: 425px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 535px;
+    margin-right: -10%;
+    margin-top: 12%;
+    border: 1px solid #c7d2fe; /* Cor Indigo (equivalente ao indigo-200) */
+    border-radius: 20px;
+  }
+  
+  #logo {
+    width: 300px;
+    height: 300px;
+  }
+  
+  h2 {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    position: relative;
+    top: -30px;
+  }
+  
+  /* Campos de texto */
+  input[type="text"],
+  input[type="password"] {
+    width: 80%;
+    padding: 10px 40px; /* espaço interno p/ ícones */
+    margin-top: 14px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-weight: bold;
+    outline: none;
+  }
+  
+  /* Container dos ícones */
+  .input-icon {
+    position: relative;
+    width: 50%;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  
+  /* Ícone do lado esquerdo */
+  .icone-esquerda {
+    position: absolute;
+    left: 12px;
+    top: 65%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
+  }
+  
+  /* Ícone do lado direito (mostrar senha) */
+  .icone-direita {
+    position: absolute;
+    right: 6px;
+    top: 65%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  
+  .icone-direita:hover {
+    opacity: 1;
+  }
+  
+  
+  /* Botão Entrar */
+  input[type="submit"] {
+    width: 52%;
+    padding: 10px;
+    margin-top: 22px;
+    background-color: #667887;
+    color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+  }

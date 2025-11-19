@@ -1,0 +1,19 @@
+<header class="main-header">
+  
+    <div class="welcome-message">
+       <span class="greeting">Welcome</span>
+       <span class="user-name">{{userName}}</span>
+    </div>
+
+    <div class="user-actions">
+        <app-profile-picture
+        [imageUrl]="currentUser.profilePicUrl"
+        (fileSelected)="uploadNewPicture($event)">
+    </app-profile-picture>
+
+    <button class="logout-btn" (click)="logout()">
+        Deslogar
+    </button>
+    </div>
+  
+</header>

@@ -1,0 +1,19 @@
+<div class="profile-container">
+    <img
+      [src]="displayUrl"
+      alt="Foto de Perfil"
+      class="profile-img"
+      (click)="openFileSelector(fileInput)"
+    >
+
+    <button class="edit-btn" (click)="openFileSelector(fileInput)" aria-label="Alterar Foto"></button>
+    
+    <input
+      type="file"
+      #fileInput
+      (change)="onFileChange($event)"
+      accept="image/*"
+      style="display: none;"
+    >
+    
+</div>

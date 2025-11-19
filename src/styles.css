@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --color-background: #000000;
+    --color-card: #161616;      /* Um pouco menos escuro que o fundo */
+    --color-primary: #4C44FF;   /* Azul Neon para botões e gráficos */
+    --color-text-light: #FFFFFF;
+    --color-text-secondary: #AAAAAA;
+    
+    /* Fontes */
+    --font-family: 'Inter', sans-serif; /* Use uma fonte moderna e limpa */
+}
+
+/* Aplica o tema ao corpo da página */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-light);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    background-color: var(--color-card);
+    border-radius: 12px; /* Cantos arredondados */
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Exemplo: Cartão de Saldo (Fundo Azul) */
+.balance-card {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1a1a1a 100%);
+    color: var(--color-text-light);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(76, 68, 255, 0.4); /* Sombra suave azulada */
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #6a64ff; /* Um tom ligeiramente mais claro no hover */
+}
