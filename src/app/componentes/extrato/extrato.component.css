@@ -1,0 +1,158 @@
+.statistics-container {
+    /* Usa as variáveis definidas no :root do styles.css */
+    background-color: var(--color-background);
+    color: var(--color-text-light);
+    padding: 20px;
+    min-height: 100vh;
+    font-family: var(--font-family, Arial, sans-serif);
+}
+
+/* --- 1. HEADER --- */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.app-header .back-btn, 
+.app-header .menu-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 0;
+}
+
+.app-header .back-btn mat-icon, 
+.app-header .menu-btn mat-icon {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+}
+
+.app-header .header-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* --- 2. OVERVIEW & TABS --- */
+.overview-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.overview-section .total-value {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.overview-section .increase-status {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.overview-section .increase-status .up-icon {
+    font-size: 18px;
+    margin-right: 5px;
+    color: #10B981; /* Mantendo o verde fixo para positivo */
+}
+
+/* Estilização das abas (Day, Week, Month, Year) */
+.time-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-card);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.time-tabs .tab-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    padding: 8px 15px;
+    margin: 0 2px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Estilização do botão ativo - sem aninhamento & */
+.time-tabs .tab-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- 3. CHART AREA --- */
+.chart-area-section {
+    height: 280px;
+    margin-bottom: 40px;
+}
+
+/* --- 4. UPCOMING PAYMENTS --- */
+.upcoming-payments-section .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-text-light);
+}
+
+.upcoming-payments-section .payment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+}
+
+.upcoming-payments-section .payment-item .icon-circle {
+    background-color: var(--color-card);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.upcoming-payments-section .payment-item .icon-circle mat-icon {
+    color: var(--color-primary);
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.upcoming-payments-section .payment-item .payment-details {
+    flex-grow: 1;
+}
+
+.upcoming-payments-section .payment-item .payment-details .brand {
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-light);
+}
+
+.upcoming-payments-section .payment-item .payment-details .time {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.upcoming-payments-section .payment-item .payment-amount {
+    font-weight: 600;
+    color: #10B981; /* Verde para receita */
+}
+
+/* Estilização para valores negativos */
+.upcoming-payments-section .payment-item .payment-amount.negative {
+    color: #EF4444; /* Vermelho para despesa */
+}

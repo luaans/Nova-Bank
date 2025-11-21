@@ -1,26 +1,53 @@
-<div class="container">
-  <app-image-carousel></app-image-carousel>
-    <form id="form1">
-        <img id="logo" src="logo.png" alt="">
-    
-         <!-- Campo usuário -->
-        <div class="input-icon">
-          <img src="usuario.png" alt="Ícone usuário" class="icone-esquerda">
-          <input type="text" id="nome" name="nome" placeholder="Insira seu login" required>
-    
-        </div>
-    
-        <!-- Campo senha -->
-        <div class="input-icon">
-          <img src="cadeado.png" alt="Ícone cadeado" class="icone-esquerda">
-          <input type="password" id="senha" name="senha" placeholder="Insira sua senha" required>
-          <img src="olho.png" alt="Ícone mostrar senha" class="icone-direita" id="toggleSenha">
-        </div>
-
-         <input type="submit" value="Entrar" >
-    
-    </form>
-    
+<div class="login-page-wrapper">
+  <div class="login-container">
+    <!-- Seção Visual (Oculta em telas menores) -->
+    <div class="visual-side">
+      <div class="abstract-graphic"></div>
+      <div class="visual-content">
+        <h1>Nova Geração <br> Banco Digital</h1>
+        <p>Experimente uma gestão financeira perfeita com nossa plataforma segura e intuitiva. Seu patrimônio, reimaginado.</p>
+      </div>
     </div>
-    
-    
+
+    <!-- Seção do Formulário -->
+    <div class="form-side">
+      <div class="header-connection">
+       <!-- <span class="encrypted-text">✅ Conexão Criptografada</span> -->
+      </div>
+
+      <div class="login-form-wrapper">
+        <div class="logo">
+          <span class="logo-icon">◬</span> NovaBank
+        </div>
+        <h2>Bem-vindo(a)</h2>
+        <p class="subtitle">Por favor, insira seus detalhes para entrar.</p>
+
+        <form class="login-form">
+          <label for="email">Endereço de Email</label>
+          <div class="input-group">
+            <input type="email" id="email" name="email" placeholder="nome@exemplo.com" required>
+          </div>
+
+          <label for="password">Senha</label>
+          <div class="input-group">
+            <input type="password" id="password" name="password" placeholder="Insira sua senha" required>
+          </div>
+
+          <div class="options-row">
+            <div class="remember-me">
+              <input type="checkbox" id="remember" name="remember">
+              <label for="remember">Lembrar de mim</label>
+            </div>
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+          </div>
+
+          <button type="submit" class="sign-in-button">Entrar</button>
+
+          <p class="signup-prompt">
+            Não tem uma conta? <a href="#" class="signup-link">Cadastre-se</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

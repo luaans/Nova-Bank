@@ -1,113 +1,261 @@
+/* Importação da fonte Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-background); /* Fundo principal escuro */
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+}
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px; /* espaço entre imagem e formulário */
-  }
-  
-  #img1{
-      width: 800px;
-      height: auto;
-   
-  }
-  
-  form {
-    background-color: #836FFF;
-    width: 425px;
-    text-align: center;
-    display: flex;
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  min-height: 700px;
+  max-height: 1000px;
+  margin: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* 1. Seção Visual (Lado Esquerdo) */
+.visual-side {
+  flex: 1;
+  background: linear-gradient(135deg, #1b0932 0%, #4C44FF 100%); /* Gradiente principal */
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito Abstrato: Usa APENAS CSS puro (radial-gradient) para evitar erros de arquivo. */
+.abstract-graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  /* Efeito de brilho abstrato */
+  background: radial-gradient(circle at 10% 90%, rgba(140, 115, 232, 0.2) 0%, transparent 60%);
+  transform: scale(1.05);
+}
+
+.visual-content {
+  position: relative;
+  z-index: 10;
+}
+
+.visual-content h1 {
+  font-size: 3.5em;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.visual-content p {
+  font-size: 1em;
+  font-weight: 400;
+  color: #ccc;
+  max-width: 85%;
+}
+
+/* 2. Seção do Formulário (Lado Direito) */
+.form-side {
+  flex: 1;
+  background-color: #120E1E; /* Fundo do formulário */
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.header-connection {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 0.85em;
+}
+
+.encrypted-text {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.login-form-wrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  font-size: 1.4em;
+  margin-right: 8px;
+}
+
+.form-side h2 {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1em;
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+/* 3. Estilos do Formulário e Inputs */
+.login-form label {
+  display: block;
+  font-size: 0.95em;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #1A1628; /* Fundo do input */
+  border: 1px solid #282438;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-form input:focus {
+  border-color:var(--color-primary);
+  box-shadow:var(--color-primary);
+}
+
+/* Linha de Opções */
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+  accent-color: var(--color-primary); /* Cor primária no checkbox */
+  margin-right: 8px;
+}
+
+.forgot-password {
+  color: var(--color-primary);;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.forgot-password:hover {
+  color: #6A0DAD;
+}
+
+/* Botão de Entrar */
+.sign-in-button {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 35px;
+  transition: background-color 0.3s, transform 0.1s;
+  box-shadow: var(--color-primary);
+}
+
+.sign-in-button:hover {
+  background-color: #8c73e8;
+  transform: translateY(-1px);
+}
+
+/* Prompt de Cadastro */
+.signup-prompt {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.signup-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.signup-link:hover {
+  color: #6A0DAD;
+}
+
+/* Media Query para Responsividade (Mobile) */
+@media (max-width: 992px) {
+  .login-container {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 535px;
-    margin-right: -10%;
-    margin-top: 12%;
-    border: 1px solid #c7d2fe; /* Cor Indigo (equivalente ao indigo-200) */
-    border-radius: 20px;
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .visual-side {
+    display: none; /* Oculta a seção visual em telas menores */
+  }
+
+  .form-side {
+    padding: 40px 20px;
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+
+  .login-form-wrapper {
+    max-width: 100%;
   }
   
-  #logo {
-    width: 300px;
-    height: 300px;
+  .form-side h2 {
+    font-size: 2em;
   }
   
-  h2 {
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    color: white;
-    position: relative;
-    top: -30px;
+  .logo {
+    margin-bottom: 30px;
   }
-  
-  /* Campos de texto */
-  input[type="text"],
-  input[type="password"] {
-    width: 80%;
-    padding: 10px 40px; /* espaço interno p/ ícones */
-    margin-top: 14px;
-    color: black;
-    border: 1px solid black;
-    border-radius: 8px;
-    font-weight: bold;
-    outline: none;
-  }
-  
-  /* Container dos ícones */
-  .input-icon {
-    position: relative;
-    width: 50%;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
-  
-  /* Ícone do lado esquerdo */
-  .icone-esquerda {
-    position: absolute;
-    left: 12px;
-    top: 65%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    opacity: 0.8;
-  }
-  
-  /* Ícone do lado direito (mostrar senha) */
-  .icone-direita {
-    position: absolute;
-    right: 6px;
-    top: 65%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
-    cursor: pointer;
-  }
-  
-  .icone-direita:hover {
-    opacity: 1;
-  }
-  
-  
-  /* Botão Entrar */
-  input[type="submit"] {
-    width: 52%;
-    padding: 10px;
-    margin-top: 22px;
-    background-color: #667887;
-    color: white;
-    border: 1px solid black;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: white;
-    color: black;
-  }
+}
+
