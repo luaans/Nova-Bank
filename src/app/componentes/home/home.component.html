@@ -1,67 +1,52 @@
+<!-- home.component.html -->
 <div class="screen-container">
-    <app-header></app-header>
+  <app-header [user]="user" (logout)="logout()"></app-header>
 
-    <div class="balance-car">
-
+  <div class="balance-car">
+    <div class="balance-container">
+      <h2>Bem-vindo, {{ user?.nome?.split(' ')[0] || 'Cliente' }}</h2>
+      <div class="balance-amount">{{ user?.saldo | currency:'BRL':'symbol':'1.2-2' || 'R$ 0,00' }}</div>
     </div>
+  </div>
 
-    <div class="card fincance-status">
-
+  <div class="card fincance-status">
+    <h3>Resumo Financeiro</h3>
+    <div class="status-grid">
+      <div class="status-item">
+        <span class="status-label">Saldo Disponível</span>
+        <span class="status-value positive">{{ user?.saldo | currency:'BRL':'symbol':'1.2-2' || 'R$ 0,00' }}</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Limite Disponível</span>
+        <span class="status-value">{{ 5000 - (user?.saldo || 0) | currency:'BRL':'symbol':'1.2-2' }}</span>
+      </div>
     </div>
+  </div>
 
-    <div class="card quick-send">
-        <div class="card quick-send-section">
-            <h3>Quick Send</h3>
-            <div class="quick-send-profiles">
-                <div class="profile-item add-button">
-                    <button class="add-btn">+</button>
-                    <span>Add</span>
-                </div>
-        
-                <div class="profile-item">
-                    <img src="/avatar1.png" alt="Roberto">
-                    <span>Roberto</span>
-                </div>
-        
-                <div class="profile-item">
-                    <img src="/avatar3.png" alt="Jenda">
-                    <span>Jenda</span>
-                </div>
-        
-                <div class="profile-item">
-                    <img src="/avatar2.png" alt="Alberto">
-                    <span>Alberto</span>
-                </div>
-        
-                <div class="profile-item">
-                    <img src="/avatar4.png" alt="Marvie">
-                    <span>Marvie</span>
-                </div>
-        
-                </div>
-        </div>
+  <div class="card transaction-list">
+    <h3>Meu Cartão</h3>
+    <div class="credit-card">
+      <div class="card-logo">NovaBank</div>
+      <div class="card-number">{{ formatarNumeroCartao(user?.cartao?.numero) }}</div>
+      <div class="card-details">
+        <div class="card-name">{{ user?.cartao?.nome || 'SEU NOME' }}</div>
+        <div class="card-expiry">Validade: {{ user?.cartao?.validade || 'MM/AA' }}</div>
+      </div>
     </div>
-
-    <div class="card transaction-list">
-
-    </div>
-    
-    <footer class="bottom-nav">
-        <a routerLink="/home" routerLinkActive="active" class="nav-item">
-            <img src="/home.png" alt="Home">
-            <span>Home</span>
-        </a>
-        <a routerLink="/extrato" routerLinkActive="active" class="nav-item">
-            <img src="/grafico.png" alt="Statistics">
-            <span>Extrato</span>
-        </a>
-        <a routerLink="/transactions" routerLinkActive="active" class="nav-item">
-            <img src="/carteira.png" alt="Transactions">
-            <span>Transactions</span>
-        </a>
-        <!-- <a routerLink="/profile" routerLinkActive="active" class="nav-item">
-            <img src="/perfil.png" alt="Profile">
-            <span>Profile</span>
-        </a> -->
-    </footer>
+  </div>
+  
+  <footer class="bottom-nav">
+    <a routerLink="/home" routerLinkActive="active" class="nav-item">
+      <img src="/home.png" alt="Home">
+      <span>Home</span>
+    </a>
+    <a routerLink="/extrato" routerLinkActive="active" class="nav-item">
+      <img src="/grafico.png" alt="Statistics">
+      <span>Extrato</span>
+    </a>
+    <a routerLink="/transacoes" routerLinkActive="active" class="nav-item">
+      <img src="/carteira.png" alt="Transactions">
+      <span>Transactions</span>
+    </a>
+  </footer>
 </div>

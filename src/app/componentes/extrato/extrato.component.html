@@ -1,50 +1,7 @@
-<div class="statistics-container">
-  <header>
-    <button class="back-btn" (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <h2>Statistics</h2>
-    <button class="menu-btn">
-      <mat-icon>bar_chart</mat-icon>
-    </button>
-  </header>
+<app-header></app-header>
 
-  <section class="overview">
-    <h1>$12,346</h1>
-    <p class="increase">
-      <mat-icon>trending_up</mat-icon> Increase of 51% from last month
-    </p>
-
-    <div class="time-tabs">
-      <button [class.active]="timeFrame === 'Day'" (click)="setTimeFrame('Day')">Day</button>
-      <button [class.active]="timeFrame === 'Week'" (click)="setTimeFrame('Week')">Week</button>
-      <button [class.active]="timeFrame === 'Month'" (click)="timeFrame = 'Month'" class="active">Month</button>
-      <button [class.active]="timeFrame === 'Year'" (click)="setTimeFrame('Year')">Year</button>
-    </div>
-  </section>
-
-  <section class="chart-area">
-    <canvas baseChart
-            [data]="chartData"
-            [options]="chartOptions"
-            [type]="'line'">
-    </canvas>
-  </section>
-
-  <section class="upcoming-payments">
-    <h3>Upcoming Payment</h3>
-
-    <div *ngFor="let payment of payments" class="payment-item">
-      <div class="icon-circle">
-        <mat-icon>{{ payment.icon }}</mat-icon>
-      </div>
-      <div class="payment-details">
-        <p class="brand">My Brand</p>
-        <p class="time">{{ payment.date }}, {{ payment.time }}</p>
-      </div>
-      <div class="payment-amount" [class.negative]="payment.amount < 0">
-        {{ payment.amount > 0 ? '+' : '' }}${{ payment.amount | number: '1.2-2' }}
-      </div>
-    </div>
-  </section>
-</div>
+<main class="extrato-container">
+  <h1>Extrato Bancário</h1>
+  <p>Esta é a página de extrato.</p>
+  <!-- TODO: Add transaction list here -->
+</main>

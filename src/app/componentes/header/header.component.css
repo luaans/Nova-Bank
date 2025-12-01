@@ -1,73 +1,55 @@
-/*
- * 1. Estilização do Header (Layout Flexbox)
- */
-.main-header {
-  height: 110px;
-  background-color: var(--color-card); /* Usando variável do tema */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  padding: 0 24px;
+/* header.component.css */
+.app-header {
+  background-color: #1a237e;
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/*
-* 2. Estilização da Mensagem de Boas-Vindas
-*/
-.welcome-message {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.welcome-message .greeting {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  font-weight: 400;
-}
-
-.welcome-message .user-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-text-light);
-  margin-top: 2px;
-}
-
-/*
-* 3. Estilização dos Elementos de Ação (Foto e Botão)
-*/
-.user-actions {
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 20px;
 }
 
-/*
-* 4. Estilização do Botão de Deslogar
-*/
-.logout-btn {
-  padding: 10px 16px;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+.logo-icon {
+  margin-right: 8px;
+  font-size: 1.8rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-name {
   font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .logout-btn:hover {
-  background-color: #dc3545;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
-}
-
-.logout-btn:active {
-  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.2);
 }

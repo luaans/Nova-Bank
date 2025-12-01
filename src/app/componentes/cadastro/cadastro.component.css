@@ -1,0 +1,361 @@
+/* Estilos fornecidos e ajustados */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            background-color: var(--color-background);
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+        }
+
+        .login-container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            min-height: 700px;
+            max-height: 1000px;
+            margin: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 1. Seção Visual (Lado Esquerdo) */
+        .visual-side {
+            flex: 1;
+            background: linear-gradient(135deg, #1b0932 0%, #4C44FF 100%);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .abstract-graphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            background: radial-gradient(circle at 10% 90%, rgba(140, 115, 232, 0.2) 0%, transparent 60%);
+            transform: scale(1.05);
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .visual-content h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .visual-content p {
+            font-size: 1em;
+            font-weight: 400;
+            color: #ccc;
+            max-width: 85%;
+        }
+
+        /* 2. Seção do Formulário (Lado Direito) */
+        .form-side {
+            flex: 1;
+            background-color: var(--color-dark-purple); /* Fundo do formulário */
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .header-connection {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 0.85em;
+        }
+
+        .encrypted-text {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .login-form-wrapper {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            font-size: 1.4em;
+            margin-right: 8px;
+        }
+
+        .form-side h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        /* 3. Estilos do Formulário e Inputs */
+        .login-form label {
+            display: block;
+            font-size: 0.95em;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #1A1628;
+            border: 1px solid #282438;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .login-form input:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(125, 95, 255, 0.5); /* Corrigi o box-shadow */
+        }
+
+        /* Linha de Opções */
+        .options-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input[type="checkbox"] {
+            accent-color: var(--color-primary);
+            margin-right: 8px;
+        }
+
+        .forgot-password {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: #6A0DAD;
+        }
+
+        /* NOVO: Estilo para o consentimento LGPD */
+        .lgpd-consent {
+            display: flex;
+            align-items: flex-start; /* Alinha o texto com o topo do checkbox */
+            margin-top: 25px;
+            font-size: 0.9em;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .lgpd-consent input[type="checkbox"] {
+            accent-color: #FF6B6B; /* Cor de destaque diferente para o consentimento legal (Ex: vermelho suave) */
+            margin-right: 12px;
+            margin-top: 3px; /* Pequeno ajuste vertical */
+            min-width: 16px; /* Garante que seja clicável */
+        }
+
+        .lgpd-consent a {
+            color: var(--color-primary);
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .lgpd-consent a:hover {
+            color: #8c73e8;
+        }
+
+        /* Botão de Entrar */
+        .sign-in-button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--color-primary);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 35px;
+            transition: background-color 0.3s, transform 0.1s;
+            box-shadow: 0 5px 15px rgba(125, 95, 255, 0.3); /* Corrigi o box-shadow */
+        }
+
+        .sign-in-button:hover {
+            background-color: #8c73e8;
+            transform: translateY(-1px);
+        }
+
+        /* Prompt de Cadastro */
+        .signup-prompt {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .signup-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .signup-link:hover {
+            color: #6A0DAD;
+        }
+
+        /* cadastro.component.css */
+.error {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.lgpd-consent {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.lgpd-consent input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.lgpd-consent a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+.lgpd-consent a:hover {
+  text-decoration: underline;
+}
+
+.sign-in-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sign-in-button:disabled {
+  background-color: #9fa8da;
+  cursor: not-allowed;
+}
+
+.sign-in-button:hover:not(:disabled) {
+  background-color: #303f9f;
+}
+
+.signup-prompt {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-link {
+  color: #3f51b5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+        /* Media Query para Responsividade (Mobile) */
+        @media (max-width: 992px) {
+            .login-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                max-height: none;
+                max-width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .visual-side {
+                display: none;
+            }
+
+            .form-side {
+                padding: 40px 20px;
+                min-height: 100vh;
+                justify-content: flex-start;
+            }
+
+            .login-form-wrapper {
+                max-width: 100%;
+            }
+
+            .form-side h2 {
+                font-size: 2em;
+            }
+
+            .logo {
+                margin-bottom: 30px;
+            }
+        }

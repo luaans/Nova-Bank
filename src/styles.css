@@ -48,3 +48,108 @@ body {
 .btn-primary:hover {
     background-color: #6a64ff; /* Um tom ligeiramente mais claro no hover */
 }
+
+/* styles.css */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.error {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.error-border {
+  border: 1px solid #ff4444;
+}
+
+.sign-in-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sign-in-button:disabled {
+  background-color: #9fa8da;
+  cursor: not-allowed;
+}
+
+.sign-in-button:hover:not(:disabled) {
+  background-color: #303f9f;
+}
+
+.signup-prompt {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-link {
+  color: #3f51b5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Estilo para o cartão de crédito */
+.credit-card {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
+  position: relative;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+.card-number {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 20px 0;
+  font-family: monospace;
+}
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-name {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-expiry {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

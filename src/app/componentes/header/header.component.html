@@ -1,19 +1,12 @@
-<header class="main-header">
-  
-    <div class="welcome-message">
-       <span class="greeting">Welcome</span>
-       <span class="user-name">{{userName}}</span>
+<!-- header.component.html -->
+<header class="app-header">
+  <div class="header-content">
+    <div class="logo">
+      <span class="logo-icon">◬</span> NovaBank
     </div>
-
-    <div class="user-actions">
-        <app-profile-picture
-        [imageUrl]="currentUser.profilePicUrl"
-        (fileSelected)="uploadNewPicture($event)">
-    </app-profile-picture>
-
-    <button class="logout-btn" (click)="logout()">
-        Deslogar
-    </button>
+    <div class="user-info" *ngIf="user">
+      <span class="user-name">Olá, {{ user.nome?.split(' ')[0] || 'Usuário' }}</span>
+      <button class="logout-btn" (click)="onLogout()">Sair</button>
     </div>
-  
+  </div>
 </header>
