@@ -30,7 +30,34 @@
       <div class="card-number">{{ formatarNumeroCartao(user?.cartao?.numero) }}</div>
       <div class="card-details">
         <div class="card-name">{{ user?.cartao?.nome || 'SEU NOME' }}</div>
-        <div class="card-expiry">Validade: {{ user?.cartao?.validade || 'MM/AA' }}</div>
+        <div class="card-expiry">Validade: {{ user?.cartao?.validade || 'MM/AA' }}</div>r
+      </div>
+    </div>
+  </div>
+  
+  <div class="card novidades-carousel">
+    <h3>Novidades em breve</h3>
+    <div class="carousel">
+      <div class="carousel-item active">
+        <img src="assets/novidades/cartao-virtual.png" alt="Cartão virtual" class="carousel-image">
+        <div class="carousel-caption">
+          <h4>Cartão virtual</h4>
+          <p>Em breve você poderá gerar um cartão virtual para compras online com mais segurança.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="assets/novidades/investimentos.png" alt="Investimentos" class="carousel-image">
+        <div class="carousel-caption">
+          <h4>Investimentos</h4>
+          <p>Planeje seu futuro investindo direto pelo NovaBank de forma simples e rápida.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="assets/novidades/recompensas.png" alt="Recompensas" class="carousel-image">
+        <div class="carousel-caption">
+          <h4>Programa de recompensas</h4>
+          <p>Ganhe pontos a cada compra e troque por benefícios exclusivos.</p>
+        </div>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 /* header.component.css */
 .app-header {
-  background-color: #1a237e;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #111827 100%);
   color: white;
   padding: 15px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
