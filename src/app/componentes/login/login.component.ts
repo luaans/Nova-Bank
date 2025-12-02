@@ -40,6 +40,19 @@ export class LoginComponent {
     }
   }
 
+  onForgotPasswordClick(event: Event) {
+    event.preventDefault();
+    const emailControl = this.loginForm.get('email');
+
+    if (!emailControl || !emailControl.value || emailControl.invalid) {
+      alert('Informe um e-mail válido para receber o link de redefinição de senha.');
+      return;
+    }
+
+    const email = emailControl.value;
+    alert(`Se este e-mail (${email}) estiver cadastrado, enviaremos instruções para redefinir sua senha.`);
+  }
+
   get formControls() {
     return this.loginForm.controls;
   }

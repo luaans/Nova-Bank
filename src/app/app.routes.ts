@@ -5,7 +5,7 @@ import { CadastroComponent } from './componentes/cadastro/cadastro.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { ExtratoComponent } from './componentes/extrato/extrato.component';
 import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
-import { authGuard } from './guards/auth.guard';
+import { authGuard } from './guards/auth.guard.ts/auth.guard.ts.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },

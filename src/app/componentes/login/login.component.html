@@ -51,7 +51,7 @@
               <input type="checkbox" id="remember" formControlName="remember">
               <label for="remember">Lembrar de mim</label>
             </div>
-            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+            <a href="#" class="forgot-password" (click)="onForgotPasswordClick($event)">Esqueceu a senha?</a>
           </div>
 
           <button type="submit" class="sign-in-button" [disabled]="!loginForm.valid">

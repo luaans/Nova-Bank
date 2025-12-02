@@ -1,72 +1,190 @@
-<!-- Estrutura Principal da Tela -->
-<div class="p-4 sm:p-8 min-h-screen flex items-start justify-center">
-  <div class="w-full max-w-lg">
-    
-    <h1 class="text-3xl font-bold mb-6 text-center text-white">Nova Transação</h1>
+<div class="screen-container">
+  <app-header [user]="currentUser" (logout)="onLogout()"></app-header>
 
-    <!-- Mensagem de Sucesso (Condicional) -->
-    @if (isTransactionSuccessful()) {
-      <div class="bg-emerald-600/20 text-emerald-300 p-4 rounded-xl mb-6 flex items-center justify-center border border-emerald-500 transition-all duration-300">
-        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <p class="font-semibold">Transação realizada com sucesso!</p>
+  <div class="content-wrapper">
+    <div class="balance-car">
+      <div class="balance-container">
+        <h2>Movimentar conta</h2>
+        <div class="balance-amount">
+          {{ currentUser?.saldo | currency:'BRL':'symbol':'1.2-2' }}
+        </div>
+        <div class="pix-key">Chave PIX: {{ currentUser?.chavePix }}</div>
       </div>
-    }
+    </div>
 
-    <!-- Card Principal da Transação -->
-    <div class="card p-6 shadow-xl transition-all duration-300">
+    <div class="card transaction-card">
+      <h3>Nova Transação</h3>
 
-      <!-- 1. SELEÇÃO DA OPÇÃO -->
-      <div class="mb-6">
-        <label for="transactionType" class="block text-sm font-medium text-gray-400 mb-2">Selecione o Tipo de Transação</label>
-        <select
-          id="transactionType"
-          name="transactionType"
-          [ngModel]="formData().transactionType"
-          (ngModelChange)="updateField('transactionType', $event)"
-          class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] text-white appearance-none transition-colors duration-200 transaction-select"
-        >
-          <option [ngValue]="null" disabled>Escolha uma opção...</option>
-          <option value="deposito">Depósito</option>
-          <option value="saque">Saque</option>
-          <option value="pix">PIX</option>
-        </select>
-      </div>
-
-      <!-- 2. CAMPOS DINÂMICOS CONFORME A SELEÇÃO -->
-      @switch (formData().transactionType) {
-        @case ('deposito') {
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input-field label="Nome do Depositante" [value]="formData().nome" (valueChange)="updateField('nome', $event)" placeholder="Seu nome completo" type="text" />
-            <input-field label="Agência" [value]="formData().agencia" (valueChange)="updateField('agencia', $event)" placeholder="Ex: 1234" type="text" />
-            <input-field label="Conta" [value]="formData().conta" (valueChange)="updateField('conta', $event)" placeholder="Ex: 56789-0" type="text" />
-            <input-field label="Valor do Depósito (R$)" [value]="formData().valor" (valueChange)="updateField('valor', $event)" placeholder="0.00" type="number" />
-          </div>
-        }
-        @case ('saque') {
-          <div class="grid grid-cols-1 gap-4">
-            <input-field label="Valor do Saque (R$)" [value]="formData().valor" (valueChange)="updateField('valor', $event)" placeholder="0.00" type="number" />
-          </div>
-        }
-        @case ('pix') {
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input-field label="Chave PIX (e-mail, telefone, CPF/CNPJ)" [value]="formData().chavePix" (valueChange)="updateField('chavePix', $event)" placeholder="Chave do destinatário" type="text" class="sm:col-span-2" />
-            <input-field label="Valor do PIX (R$)" [value]="formData().valor" (valueChange)="updateField('valor', $event)" placeholder="0.00" type="number" class="sm:col-span-2" />
-          </div>
-        }
+      @if (isTransactionSuccessful) {
+        <div class="alert success-alert">
+          <span>Transação realizada com sucesso!</span>
+        </div>
       }
 
-      <!-- 3. BOTÃO DE SUBMISSÃO (Condicional e Habilitado por Validação) -->
-      @if (formData().transactionType) {
-        <div class="mt-8 pt-4 border-t border-gray-700">
+      @if (errorMessage) {
+        <div class="alert error-alert">
+          <span>{{ errorMessage }}</span>
+        </div>
+      }
+
+      <section class="transaction-section">
+        <h4>Tipo de operação</h4>
+        <p class="section-helper">Escolha o que você deseja fazer agora.</p>
+        <div class="transaction-type-grid">
+          <button
+            type="button"
+            class="btn-primary"
+            [class.active]="formData.type === 'deposito'"
+            (click)="formData.type = 'deposito'">
+            Depósito
+          </button>
+
+          <button
+            type="button"
+            class="btn-primary"
+            [class.active]="formData.type === 'saque'"
+            (click)="formData.type = 'saque'">
+            Saque
+          </button>
+
+          <button
+            type="button"
+            class="btn-primary"
+            [class.active]="formData.type === 'pix'"
+            (click)="formData.type = 'pix'">
+            PIX
+          </button>
+        </div>
+      </section>
+
+      @if (formData.type === 'deposito') {
+        <section class="transaction-section">
+          <h4>Dados do depósito</h4>
+          <div class="form-group">
+            <label>Valor do depósito (R$)</label>
+            <input
+              type="number"
+              class="input-control"
+              [ngModel]="formData.value"
+              [ngModelOptions]="{standalone: true}"
+              (ngModelChange)="formData.value = $event"
+              min="0.01"
+              step="0.01"
+              placeholder="0,00" />
+          </div>
+        </section>
+      }
+
+      @if (formData.type === 'saque') {
+        <section class="transaction-section">
+          <h4>Dados do saque</h4>
+          <div class="form-group">
+            <label>Valor do saque (R$)</label>
+            <input
+              type="number"
+              class="input-control"
+              [ngModel]="formData.value"
+              [ngModelOptions]="{standalone: true}"
+              (ngModelChange)="formData.value = $event"
+              min="0.01"
+              step="0.01"
+              placeholder="0,00" />
+          </div>
+        </section>
+      }
+
+      @if (formData.type === 'pix') {
+        <section class="transaction-section">
+          <h4>Dados do PIX</h4>
+          <div class="form-group">
+            <label>Chave PIX do destinatário</label>
+            <input
+              type="text"
+              class="input-control"
+              [ngModel]="formData.pixKey"
+              [ngModelOptions]="{standalone: true}"
+              (ngModelChange)="formData.pixKey = $event; checkPixKey()"
+              placeholder="E-mail, CPF ou chave cadastrada" />
+            @if (recipientInfo && recipientInfo.found) {
+              <p class="hint success-hint">
+                Enviando para: {{ recipientInfo.name }}
+              </p>
+            } @else if (recipientInfo && !recipientInfo.found && formData.pixKey && formData.pixKey.length > 3) {
+              <p class="hint error-hint">
+                Chave PIX não encontrada
+              </p>
+            }
+          </div>
+
+          <div class="form-group">
+            <label>Valor do PIX (R$)</label>
+            <input
+              type="number"
+              class="input-control"
+              [ngModel]="formData.value"
+              [ngModelOptions]="{standalone: true}"
+              (ngModelChange)="formData.value = $event"
+              min="0.01"
+              step="0.01"
+              placeholder="0,00" />
+          </div>
+        </section>
+      }
+
+      @if (formData.type) {
+        <section class="transaction-section">
+          <h4>Descrição</h4>
+          <div class="form-group">
+            <label>
+              {{ formData.type === 'pix' ? 'Mensagem (opcional)' : 'Descrição (opcional)' }}
+            </label>
+            <input
+              type="text"
+              class="input-control"
+              [ngModel]="formData.description"
+              [ngModelOptions]="{standalone: true}"
+              (ngModelChange)="formData.description = $event"
+              [placeholder]="formData.type === 'pix' ? 'Mensagem para o destinatário' : 'Descrição da transação'" />
+          </div>
+        </section>
+      }
+
+      @if (formData.type) {
+        <div class="transaction-actions">
           <button
             class="btn-primary w-full"
-            [disabled]="!isFormValid()"
-            (click)="processTransaction()"
-          >
-            {{ getButtonText() }}
+            [disabled]="isLoading"
+            (click)="processTransaction()">
+            @if (!isLoading) {
+              <span>
+                {{
+                  formData.type === 'deposito' ? 'Confirmar depósito' :
+                  formData.type === 'saque' ? 'Confirmar saque' :
+                  'Enviar PIX'
+                }}
+              </span>
+            } @else {
+              <span>Processando...</span>
+            }
           </button>
         </div>
       }
+
     </div>
   </div>
+
+  <footer class="bottom-nav">
+    <a routerLink="/home" routerLinkActive="active" class="nav-item">
+      <img src="/home.png" alt="Home">
+      <span>Home</span>
+    </a>
+    <a routerLink="/extrato" routerLinkActive="active" class="nav-item">
+      <img src="/grafico.png" alt="Statistics">
+      <span>Extrato</span>
+    </a>
+    <a routerLink="/transacoes" routerLinkActive="active" class="nav-item">
+      <img src="/carteira.png" alt="Transactions">
+      <span>Transações</span>
+    </a>
+  </footer>
 </div>

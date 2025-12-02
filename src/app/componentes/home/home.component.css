@@ -2,9 +2,10 @@
 .screen-container {
   min-height: 100vh;
   background-color: var(--color-background);
-  padding: 20px;
-  padding-bottom: 100px; /* Espaço para o menu inferior */
+  padding: 120px 16px 100px;
   box-sizing: border-box;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 /* Seção de Saldo */
@@ -134,8 +135,8 @@
 .card.transaction-list {
   background-color: var(--color-card);
   border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
   min-height: 200px;
   display: flex;
   align-items: center;

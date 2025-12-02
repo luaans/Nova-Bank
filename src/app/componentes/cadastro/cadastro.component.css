@@ -1,6 +1,5 @@
-/* Estilos fornecidos e ajustados */
-        body {
-            margin: 0;
+/* Estilos alinhados com a tela de login */
+        :host {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,8 +14,7 @@
             display: flex;
             width: 100%;
             max-width: 1400px;
-            min-height: 700px;
-            max-height: 1000px;
+            min-height: 760px; /* um pouco maior que o login para caber o formulário inteiro */
             margin: 20px;
             border-radius: 12px;
             overflow: hidden;
@@ -68,7 +66,7 @@
         /* 2. Seção do Formulário (Lado Direito) */
         .form-side {
             flex: 1;
-            background-color: var(--color-dark-purple); /* Fundo do formulário */
+            background-color: #120E1E; /* Mesmo fundo do login */
             padding: 60px 80px;
             display: flex;
             flex-direction: column;
@@ -136,7 +134,8 @@
 
         .login-form input[type="text"],
         .login-form input[type="email"],
-        .login-form input[type="password"] {
+        .login-form input[type="password"],
+        .login-form input[type="number"] {
             width: 100%;
             padding: 15px;
             background-color: #1A1628;

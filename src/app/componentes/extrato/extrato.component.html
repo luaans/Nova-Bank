@@ -1,7 +1,101 @@
-<app-header></app-header>
+<div class="screen-container">
+  <app-header [user]="currentUser" (logout)="onLogout()"></app-header>
 
-<main class="extrato-container">
-  <h1>Extrato Bancário</h1>
-  <p>Esta é a página de extrato.</p>
-  <!-- TODO: Add transaction list here -->
-</main>
+  <div class="content-wrapper">
+    <div class="balance-car">
+      <div class="balance-container">
+        <h2>Extrato da conta</h2>
+        <div class="balance-amount">
+          {{ currentUser?.saldo | currency:'BRL':'symbol':'1.2-2' }}
+        </div>
+        <div class="pix-key">Chave PIX: {{ currentUser?.chavePix }}</div>
+      </div>
+    </div>
+
+    <div class="card extrato-card">
+      <h3>Movimentações recentes</h3>
+      <p class="section-helper">Veja todas as entradas e saídas da sua conta.</p>
+
+      @if (transactions.length) {
+        <div class="transaction-list">
+          <div class="transaction-item" *ngFor="let t of transactions">
+            <div class="transaction-main">
+              <div class="transaction-title-row">
+                <span class="transaction-type-badge" [ngClass]="t.type">
+                  {{
+                    t.type === 'deposito' ? 'Depósito' :
+                    t.type === 'saque' ? 'Saque' :
+                    t.type === 'pix_enviado' ? 'PIX enviado' :
+                    t.type === 'pix_recebido' ? 'PIX recebido' :
+                    'Transação'
+                  }}
+                </span>
+
+                <span
+                  class="transaction-value"
+                  [ngClass]="{
+                    'negative': t.type === 'saque' || t.type === 'pix_enviado',
+                    'positive': t.type === 'deposito' || t.type === 'pix_recebido'
+                  }">
+                  {{ (t.type === 'saque' || t.type === 'pix_enviado') ? '-' : '+' }}
+                  {{ t.value | currency:'BRL':'symbol':'1.2-2' }}
+                </span>
+              </div>
+
+              <div class="transaction-description">
+                @if (t.type === 'pix_enviado') {
+                  @if (t.relatedName && t.description) {
+                    PIX para {{ t.relatedName }} – {{ t.description }}
+                  } @else if (t.description) {
+                    PIX enviado – {{ t.description }}
+                  } @else {
+                    PIX enviado
+                  }
+                } @else if (t.type === 'pix_recebido') {
+                  @if (t.relatedName && t.description) {
+                    PIX de {{ t.relatedName }} – {{ t.description }}
+                  } @else if (t.description) {
+                    PIX recebido – {{ t.description }}
+                  } @else {
+                    PIX recebido
+                  }
+                } @else {
+                  {{ t.description }}
+                }
+              </div>
+
+              <div class="transaction-meta">
+                <span>{{ t.date | date:'dd/MM/yyyy HH:mm' }}</span>
+                <span *ngIf="t.relatedName">
+                  {{
+                    t.type === 'pix_enviado' ? 'Para: ' :
+                    t.type === 'pix_recebido' ? 'De: ' :
+                    'Relacionado: '
+                  }}
+                  {{ t.relatedName }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      } @else {
+        <p class="empty-text">Nenhuma movimentação encontrada ainda.</p>
+      }
+    </div>
+  </div>
+
+  <footer class="bottom-nav">
+    <a routerLink="/home" routerLinkActive="active" class="nav-item">
+      <img src="/home.png" alt="Home">
+      <span>Home</span>
+    </a>
+    <a routerLink="/extrato" routerLinkActive="active" class="nav-item">
+      <img src="/grafico.png" alt="Statistics">
+      <span>Extrato</span>
+    </a>
+    <a routerLink="/transacoes" routerLinkActive="active" class="nav-item">
+      <img src="/carteira.png" alt="Transactions">
+      <span>Transações</span>
+    </a>
+  </footer>
+</div>
